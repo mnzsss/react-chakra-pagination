@@ -1,0 +1,37 @@
+{
+  "name": "react-chakra-pagination",
+  "version": "0.1.0",
+  "description": "Easy way for paginate lists using Chakra UI",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "ts-check": "tsc"
+  },
+  "keywords": [
+    "chakra-ui",
+    "react",
+    "pagination"
+  ],
+  "author": "Gabriel Menezes",
+  "dependencies": {},
+  "devDependencies": {
+    "@chakra-ui/react": "^1.6.9",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-table": "^7.7.6",
+    "framer-motion": "^4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-table": "^7.7.0",
+    "rollup": "^2.58.0",
+    "rollup-plugin-sass": "^1.2.9",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.4.3"
+  }
+}
