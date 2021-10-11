@@ -1,8 +1,7 @@
 {
   "name": "react-chakra-pagination",
-  "version": "1.0.0",
-  "description": "Easy way for paginate lists using Chakra UI",
-  "license": "MIT",
+  "version": "1.0.1",
+  "description": "Easy way for paginate lists using Chakra UI, using lists components and hooks.",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,10 +9,17 @@
     "start": "rollup -c -w",
     "ts-check": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnzsss/react-chakra-pagination.git"
+  },
+  "homepage": "https://github.com/mnzsss/react-chakra-pagination#readme",
+  "license": "ISC",
   "keywords": [
     "chakra-ui",
     "react",
-    "pagination"
+    "pagination",
+    "react-table"
   ],
   "author": "Gabriel Menezes",
   "dependencies": {},
