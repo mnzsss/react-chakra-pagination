@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, ThemeTypings } from "@chakra-ui/react";
 
-type PaginationItemProps = {
+interface PaginationItemProps {
   isCurrent?: boolean;
   page: number;
   onPageChange: (page: number) => void;
   colorScheme?: ThemeTypings["colorSchemes"];
-};
+}
 
 export function PaginationItem({
   isCurrent = false,

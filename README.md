@@ -28,16 +28,6 @@ $ npm install react-table --save
 $ yarn add react-table
 ```
 
-#### React Icons
-
-```
-$ npm install react-icons --save
-```
-
-```
-$ yarn add react-icons
-```
-
 ---
 
 ### Install this package
@@ -173,7 +163,7 @@ function App() {
           colorScheme="blue"
           // Fallback component when list is empty
           emptyData={{
-            icon: FiUser,
+            icon: <FiUser />,
             text: "Nobody is registered here."
           }}
           totalRegisters={users.length}

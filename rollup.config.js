@@ -7,7 +7,6 @@ export default {
   input: ["src/index.ts"],
   output: [
     {
-      dir: "dist",
       file: pkg.main,
       format: "cjs",
       exports: "named",

@@ -1,21 +1,4 @@
-type Options<I = any> = {
-  totalRegisters: number;
-  page: number;
-  items: I[];
-  registersPerPage?: number;
-  siblingsCount?: number;
-};
-
-type Pagination<I = any> = {
-  pageItems: I[];
-  totalPages: number;
-  registersPerPage: number;
-  currentPage: number;
-  lastPage: number;
-  nextPages: number[];
-  previousPages: number[];
-  siblingsCount: number;
-};
+import { Options, Pagination } from "../types/Pagination";
 
 function generatePagesArray(from: number, to: number): number[] {
   return [...new Array(to - from)]

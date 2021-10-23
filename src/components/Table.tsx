@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   Table as ChakraTable,
   Thead,
@@ -10,25 +10,23 @@ import {
   ThemeTypings,
 } from "@chakra-ui/react";
 import { Column, useTable } from "react-table";
-import { usePagination } from "../hooks/usePagination";
-import { MdBrokenImage } from "react-icons/md";
 
-import { NoContentProps, NoContent } from "./NoContent";
+import { usePagination } from "../hooks/usePagination";
+
+import { DataType, EmptyMessage } from "../types/Table";
+import { BasePagination } from "../types/Pagination";
+
+import { NoContent } from "./NoContent";
 import { Pagination } from "./Pagination";
 
-type DataType = {
-  [key: string]: JSX.Element | string;
-};
-
-type EmptyMessage = Partial<NoContentProps>;
-
-interface TableProps {
+interface TableProps extends BasePagination {
+  /** List parsed data columns using string or custom component */
   columns: Column<DataType>[];
+  /** Pass the array of Table Headers */
   data: DataType[];
-  page: number;
-  totalRegisters: number;
-  onPageChange: (page: number) => void;
+  /** Custom color schemes using Chakra UI */
   colorScheme?: ThemeTypings["colorSchemes"];
+  /** Fallback for empty data  */
   emptyData?: EmptyMessage;
 }
 
@@ -54,10 +52,9 @@ export function Table({
     return (
       <NoContent
         {...emptyData}
-        icon={emptyData?.icon ?? MdBrokenImage}
         text={emptyData?.text ?? "Nenhum dado para ser exibido."}
       >
-        {emptyData?.children ?? null}
+        {emptyData?.children}
       </NoContent>
     );
   }
