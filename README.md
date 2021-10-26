@@ -178,7 +178,7 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root")
+const rootElement = document.getElementById("root");
 
 // Use ChakraProvider to get styles of Chakra
 render(
