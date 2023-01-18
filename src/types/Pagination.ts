@@ -2,14 +2,14 @@ export type Options<I = any> = {
   totalRegisters: number;
   page: number;
   items: I[];
-  registersPerPage?: number;
+  itemsPerPage?: number;
   siblingsCount?: number;
 };
 
 export type Pagination<I = any> = {
   pageItems: I[];
   totalPages: number;
-  registersPerPage: number;
+  itemsPerPage: number;
   currentPage: number;
   lastPage: number;
   nextPages: number[];

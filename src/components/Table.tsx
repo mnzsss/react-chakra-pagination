@@ -29,10 +29,18 @@ interface TableProps extends BasePagination {
   columns: ColumnDef<DataType>[];
   /** Pass the array of Table Headers */
   data: DataType[];
-  /** Custom color schemes using Chakra UI */
+  /**
+   * Custom color schemes using Chakra UI
+   * @default 'teal'
+   */
   colorScheme?: ThemeTypings["colorSchemes"];
   /** Fallback for empty data  */
   emptyData?: EmptyMessage;
+  /**
+   * Define how many items displayed per page
+   * @default 10
+   */
+  itemsPerPage?: number;
 }
 
 export function Table({
@@ -42,12 +50,14 @@ export function Table({
   data,
   columns,
   colorScheme = "teal",
+  itemsPerPage = 10,
   emptyData,
 }: TableProps) {
   const pagination = usePagination({
     totalRegisters,
     page,
     items: data,
+    itemsPerPage,
   });
 
   const table = useReactTable({

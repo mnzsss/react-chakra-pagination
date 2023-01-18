@@ -10,11 +10,11 @@ export function usePagination<I = any>({
   totalRegisters,
   page,
   items,
-  registersPerPage = 10,
+  itemsPerPage = 10,
   siblingsCount = 1,
 }: Options<I>): Pagination<I> {
   const currentPage = page;
-  const lastPage = Math.ceil(totalRegisters / registersPerPage);
+  const lastPage = Math.ceil(totalRegisters / itemsPerPage);
   const totalPages = lastPage === 0 ? 1 : lastPage;
 
   const previousPages =
@@ -29,8 +29,8 @@ export function usePagination<I = any>({
         )
       : [];
 
-  const pageStart = (page - 1) * registersPerPage;
-  const pageEnd = pageStart + registersPerPage;
+  const pageStart = (page - 1) * itemsPerPage;
+  const pageEnd = pageStart + itemsPerPage;
 
   const pageItems = items.slice(pageStart, pageEnd);
 
@@ -41,7 +41,7 @@ export function usePagination<I = any>({
     lastPage,
     nextPages,
     previousPages,
-    registersPerPage,
+    itemsPerPage,
     siblingsCount,
   };
 }
