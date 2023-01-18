@@ -9,7 +9,12 @@ import {
   Box,
   ThemeTypings,
 } from "@chakra-ui/react";
-import { Column, useTable } from "react-table";
+import {
+  ColumnDef,
+  useReactTable,
+  flexRender,
+  getCoreRowModel,
+} from "@tanstack/react-table";
 
 import { usePagination } from "../hooks/usePagination";
 
@@ -21,7 +26,7 @@ import { Pagination } from "./Pagination";
 
 interface TableProps extends BasePagination {
   /** List parsed data columns using string or custom component */
-  columns: Column<DataType>[];
+  columns: ColumnDef<DataType>[];
   /** Pass the array of Table Headers */
   data: DataType[];
   /** Custom color schemes using Chakra UI */
@@ -45,8 +50,11 @@ export function Table({
     items: data,
   });
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data: pagination.pageItems });
+  const table = useReactTable({
+    columns,
+    data: pagination.pageItems,
+    getCoreRowModel: getCoreRowModel(),
+  });
 
   if (data.length === 0) {
     return (
@@ -60,32 +68,51 @@ export function Table({
   }
 
   return (
-    <Box py="6" px="8" borderRadius="8" w="full" h="100%">
-      <ChakraTable {...getTableProps()}>
+    <Box py="6" px="8" borderRadius="8" w="full" h="100%" color="">
+      <ChakraTable>
         <Thead>
-          {headerGroups.map((headerGroup) => (
-            <Tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-              {headerGroup.headers.map((column) => (
-                <React.Fragment key={column.id}>
-                  <Th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </Th>
-                </React.Fragment>
-              ))}
+          {table.getHeaderGroups().map((headerGroup) => (
+            <Tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => {
+                const meta: any = header.column.columnDef.meta;
+
+                return (
+                  <React.Fragment key={header.id}>
+                    <Th
+                      key={header.id}
+                      onClick={header.column.getToggleSortingHandler()}
+                      isNumeric={meta?.isNumeric}
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                    </Th>
+                  </React.Fragment>
+                );
+              })}
             </Tr>
           ))}
         </Thead>
 
-        <Tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
+        <Tbody>
+          {table.getRowModel().rows.map((row) => {
             return (
-              <Tr {...row.getRowProps()} key={row.id}>
-                {row.cells.map((cell, index) => (
-                  <React.Fragment key={cell.column.id + index}>
-                    <Td {...cell.getCellProps()}>{cell.render("Cell")}</Td>
-                  </React.Fragment>
-                ))}
+              <Tr key={row.id}>
+                {row.getVisibleCells().map((cell, index) => {
+                  const meta: any = cell.column.columnDef.meta;
+                  return (
+                    <Td
+                      key={cell.column.id + index}
+                      isNumeric={meta?.isNumeric}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </Td>
+                  );
+                })}
               </Tr>
             );
           })}

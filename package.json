@@ -6,6 +6,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
+    "prepublish": "rm -rf ./dist && pnpm run build",
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "lint": "tsc"
@@ -26,21 +27,29 @@
     "/dist"
   ],
   "author": "Gabriel Menezes",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^8.5.0"
+  },
   "dependencies": {
-    "@chakra-ui/react": "^1.6.9",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "framer-motion": "^4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-table": "^7.7.0"
+    "@tanstack/react-table": "^8.7.6",
+    "csstype": "^3.1.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
-    "@types/react": "^17.0.27",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-table": "^7.7.6",
     "tsup": "^6.5.0",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^8.5.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10"
   }
 }
