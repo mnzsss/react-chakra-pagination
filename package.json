@@ -1,6 +1,8 @@
 {
   "name": "react-chakra-pagination",
   "version": "1.1.3",
+  "author": "Gabriel Menezes <gabrielsmenezes99@gmail.com>",
+  "license": "MIT",
   "description": "Easy way for paginate lists using Chakra UI, using lists components and hooks.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -9,6 +11,9 @@
     "prepublish": "rm -rf ./dist && pnpm run build",
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "changeset": "changeset",
+    "bump": "node ./scripts/bump.js",
+    "release": "node ./scripts/release.js",
     "lint": "tsc"
   },
   "repository": {
@@ -16,7 +21,6 @@
     "url": "git+https://github.com/mnzsss/react-chakra-pagination.git"
   },
   "homepage": "https://github.com/mnzsss/react-chakra-pagination#readme",
-  "license": "ISC",
   "keywords": [
     "chakra-ui",
     "react",
@@ -26,30 +30,30 @@
   "files": [
     "/dist"
   ],
-  "author": "Gabriel Menezes",
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@chakra-ui/react": "^2.4.9",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "framer-motion": "^8.5.0"
-  },
-  "dependencies": {
-    "@tanstack/react-table": "^8.7.6",
-    "csstype": "^3.1.1"
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "tsup": "^6.5.0",
-    "typescript": "^4.4.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "framer-motion": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@tanstack/react-table": "^8.7.6",
+    "csstype": "^3.1.1",
+    "@actions/exec": "^1.1.1"
+  },
+  "devDependencies": {
+    "@chakra-ui/react": "^2.4.9",
+    "@changesets/cli": "^2.26.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10"
+    "@types/react-dom": "^18.0.10",
+    "framer-motion": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.4.3"
   }
 }
