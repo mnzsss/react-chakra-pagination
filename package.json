@@ -39,9 +39,10 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@actions/exec": "^1.1.1",
+    "@chakra-ui/icons": "^2.0.16",
     "@tanstack/react-table": "^8.7.6",
-    "csstype": "^3.1.1",
-    "@actions/exec": "^1.1.1"
+    "csstype": "^3.1.1"
   },
   "devDependencies": {
     "@chakra-ui/react": "^2.4.9",

@@ -8,13 +8,17 @@ import {
   Td,
   Box,
   ThemeTypings,
+  chakra,
 } from "@chakra-ui/react";
 import {
   ColumnDef,
   useReactTable,
   flexRender,
   getCoreRowModel,
+  SortingState,
+  getSortedRowModel,
 } from "@tanstack/react-table";
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 
 import { usePagination } from "../hooks/usePagination";
 
@@ -41,6 +45,13 @@ interface TableProps extends BasePagination {
    * @default 10
    */
   itemsPerPage?: number;
+  /**
+   * Define sort icons
+   */
+  sortIcons?: {
+    up?: any;
+    down?: any;
+  };
 }
 
 export function Table({
@@ -52,7 +63,10 @@ export function Table({
   colorScheme = "teal",
   itemsPerPage = 10,
   emptyData,
+  sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
 }: TableProps) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+
   const pagination = usePagination({
     totalRegisters,
     page,
@@ -64,6 +78,11 @@ export function Table({
     columns,
     data: pagination.pageItems,
     getCoreRowModel: getCoreRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting,
+    },
   });
 
   if (data.length === 0) {
@@ -86,6 +105,9 @@ export function Table({
               {headerGroup.headers.map((header) => {
                 const meta: any = header.column.columnDef.meta;
 
+                const UpIcon = sortIcons.up;
+                const DownIcon = sortIcons.down;
+
                 return (
                   <React.Fragment key={header.id}>
                     <Th
@@ -97,6 +119,16 @@ export function Table({
                         header.column.columnDef.header,
                         header.getContext()
                       )}
+
+                      <chakra.span pl="4">
+                        {header.column.getIsSorted() ? (
+                          header.column.getIsSorted() === "desc" ? (
+                            <DownIcon aria-label="sorted descending" />
+                          ) : (
+                            <UpIcon aria-label="sorted ascending" />
+                          )
+                        ) : null}
+                      </chakra.span>
                     </Th>
                   </React.Fragment>
                 );
