@@ -12,7 +12,6 @@
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "changeset": "changeset",
-    "release": "node ./scripts/release.js",
     "lint": "tsc"
   },
   "repository": {
