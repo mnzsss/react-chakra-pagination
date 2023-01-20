@@ -1,21 +1,4 @@
-type Options<I = any> = {
-  totalRegisters: number;
-  page: number;
-  items: I[];
-  registersPerPage?: number;
-  siblingsCount?: number;
-};
-
-type Pagination<I = any> = {
-  pageItems: I[];
-  totalPages: number;
-  registersPerPage: number;
-  currentPage: number;
-  lastPage: number;
-  nextPages: number[];
-  previousPages: number[];
-  siblingsCount: number;
-};
+import { Options, Pagination } from "../types/Pagination";
 
 function generatePagesArray(from: number, to: number): number[] {
   return [...new Array(to - from)]
@@ -23,15 +6,16 @@ function generatePagesArray(from: number, to: number): number[] {
     .filter((page) => page > 0);
 }
 
-export function usePagination<I = any>({
+export function usePagination<I>({
   totalRegisters,
   page,
   items,
-  registersPerPage = 10,
+  itemsPerPage = 10,
   siblingsCount = 1,
+  sorting = [],
 }: Options<I>): Pagination<I> {
   const currentPage = page;
-  const lastPage = Math.ceil(totalRegisters / registersPerPage);
+  const lastPage = Math.ceil(totalRegisters / itemsPerPage);
   const totalPages = lastPage === 0 ? 1 : lastPage;
 
   const previousPages =
@@ -46,10 +30,27 @@ export function usePagination<I = any>({
         )
       : [];
 
-  const pageStart = (page - 1) * registersPerPage;
-  const pageEnd = pageStart + registersPerPage;
+  const pageStart = (page - 1) * itemsPerPage;
+  const pageEnd = pageStart + itemsPerPage;
 
-  const pageItems = items.slice(pageStart, pageEnd);
+  const pageItems = items
+    // Sort the items according to the sorting
+    .sort((a, b) => {
+      const { desc, id } = sorting[0] ?? {};
+
+      if (typeof a[id] !== "string") {
+        return undefined;
+      }
+
+      let order: any = desc ? b : a;
+      let compare = desc ? a : b;
+
+      return order[id].localeCompare(compare[id], "pt-BR", {
+        sensitivity: "base",
+      });
+    })
+    // Get the items for the current page size
+    .slice(pageStart, pageEnd);
 
   return {
     pageItems,
@@ -58,7 +59,7 @@ export function usePagination<I = any>({
     lastPage,
     nextPages,
     previousPages,
-    registersPerPage,
+    itemsPerPage,
     siblingsCount,
   };
 }

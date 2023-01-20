@@ -1,43 +1,58 @@
 {
   "name": "react-chakra-pagination",
-  "version": "1.0.1",
+  "version": "2.0.0",
+  "author": "Gabriel Menezes <gabrielsmenezes99@gmail.com>",
+  "license": "MIT",
   "description": "Easy way for paginate lists using Chakra UI, using lists components and hooks.",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "ts-check": "tsc"
+    "prepublish": "rm -rf ./dist && pnpm run build",
+    "build": "tsup src/index.ts --format cjs,esm --dts --external react",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "changeset": "changeset",
+    "lint": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mnzsss/react-chakra-pagination.git"
   },
   "homepage": "https://github.com/mnzsss/react-chakra-pagination#readme",
-  "license": "ISC",
   "keywords": [
     "chakra-ui",
     "react",
     "pagination",
     "react-table"
   ],
-  "author": "Gabriel Menezes",
-  "dependencies": {},
+  "files": [
+    "/dist"
+  ],
+  "peerDependencies": {
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@actions/exec": "^1.1.1",
+    "@chakra-ui/icons": "^2.0.16",
+    "@tanstack/react-table": "^8.7.6",
+    "csstype": "^3.1.1"
+  },
   "devDependencies": {
-    "@chakra-ui/react": "^1.6.9",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@types/react": "^17.0.27",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-table": "^7.7.6",
-    "framer-motion": "^4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
-    "react-table": "^7.7.0",
-    "rollup": "^2.58.0",
-    "rollup-plugin-sass": "^1.2.9",
-    "rollup-plugin-typescript2": "^0.30.0",
+    "@chakra-ui/react": "^2.4.9",
+    "@changesets/cli": "^2.26.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "framer-motion": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.5.0",
     "typescript": "^4.4.3"
   }
 }

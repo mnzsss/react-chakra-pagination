@@ -1,14 +1,13 @@
 import React from "react";
-import { Flex, Icon, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { IconType } from "react-icons";
 
-export type NoContentProps = {
+export interface NoContentProps {
   text: string;
-  icon?: IconType;
+  icon?: any;
   children?: ReactNode;
   noShadow?: boolean;
-};
+}
 
 export function NoContent({ icon, text, children, noShadow }: NoContentProps) {
   return (
@@ -23,7 +22,7 @@ export function NoContent({ icon, text, children, noShadow }: NoContentProps) {
       boxShadow={noShadow ? "unset" : "sm"}
       h="100%"
     >
-      {icon && (
+      {icon ? (
         <Flex
           p="6"
           align="center"
@@ -31,9 +30,9 @@ export function NoContent({ icon, text, children, noShadow }: NoContentProps) {
           borderRadius="full"
           bg="gray.50"
         >
-          <Icon as={icon} fontSize="24" color="teal.700" />
+          {icon}
         </Flex>
-      )}
+      ) : null}
 
       <Text mt="4">{text}</Text>
 
