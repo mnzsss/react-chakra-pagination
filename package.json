@@ -1,6 +1,6 @@
 {
   "name": "react-chakra-pagination",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Gabriel Menezes <gabrielsmenezes99@gmail.com>",
   "license": "MIT",
   "description": "Easy way for paginate lists using Chakra UI, using lists components and hooks.",
