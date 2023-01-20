@@ -12,6 +12,7 @@
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "changeset": "changeset",
+    "release": "release-it",
     "lint": "tsc"
   },
   "repository": {
@@ -52,6 +53,7 @@
     "framer-motion": "^8.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "release-it": "^15.6.0",
     "tsup": "^6.5.0",
     "typescript": "^4.4.3"
   }
