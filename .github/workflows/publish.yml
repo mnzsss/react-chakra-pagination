@@ -18,12 +18,15 @@ jobs:
         with:
           node-version: 16.x
           cache: "pnpm"
+          registry-url: https://registry.npmjs.org/
+
+      - run: pnpm
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm publish
+          publish: npm publish --access public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
