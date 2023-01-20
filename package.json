@@ -16,7 +16,7 @@
     "lint": "tsc"
   },
   "publishConfig": {
-    "mnzsss:registry": "https://npm.pkg.github.com"
+    "gabrieldsm99:registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
