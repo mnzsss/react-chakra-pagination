@@ -17,22 +17,23 @@ import {
   getCoreRowModel,
   SortingState,
   getSortedRowModel,
+  PaginationState,
 } from "@tanstack/react-table";
 import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 
 import { usePagination } from "../hooks/usePagination";
 
-import { DataType, EmptyMessage } from "../types/Table";
+import { EmptyMessage } from "../types/Table";
 import { BasePagination } from "../types/Pagination";
 
 import { NoContent } from "./NoContent";
 import { Pagination } from "./Pagination";
 
-interface TableProps extends BasePagination {
+interface TableProps<Data extends object> extends BasePagination {
   /** List parsed data columns using string or custom component */
-  columns: ColumnDef<DataType>[];
+  columns: ColumnDef<Data, any>[];
   /** Pass the array of Table Headers */
-  data: DataType[];
+  data: Data[];
   /**
    * Custom color schemes using Chakra UI
    * @default 'teal'
@@ -54,34 +55,51 @@ interface TableProps extends BasePagination {
   };
 }
 
-export function Table({
-  page,
-  onPageChange,
-  totalRegisters,
+export function Table<Data extends object>({
   data,
   columns,
   colorScheme = "teal",
   itemsPerPage = 10,
   emptyData,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
-}: TableProps) {
+}: TableProps<Data>) {
+  const [{ pageIndex, pageSize }, setPagination] =
+    React.useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: itemsPerPage,
+    });
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  const pagination = usePagination({
-    totalRegisters,
-    page,
+  const paginationState = usePagination<Data>({
+    totalRegisters: data.length,
+    page: pageIndex + 1,
     items: data,
-    itemsPerPage,
+    itemsPerPage: pageSize,
+    sorting,
   });
+
+  const pagination = React.useMemo(
+    () => ({
+      pageIndex,
+      pageSize,
+    }),
+    [pageIndex, pageSize]
+  );
 
   const table = useReactTable({
     columns,
-    data: pagination.pageItems,
+    data: paginationState.pageItems,
     getCoreRowModel: getCoreRowModel(),
+    pageCount: paginationState.totalPages,
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onPaginationChange: setPagination,
+    manualSorting: true,
+    manualPagination: true,
     state: {
       sorting,
+      pagination,
     },
   });
 
@@ -143,6 +161,7 @@ export function Table({
               <Tr key={row.id}>
                 {row.getVisibleCells().map((cell, index) => {
                   const meta: any = cell.column.columnDef.meta;
+
                   return (
                     <Td
                       key={cell.column.id + index}
@@ -162,9 +181,11 @@ export function Table({
       </ChakraTable>
 
       <Pagination
-        {...pagination}
+        {...paginationState}
         colorScheme={colorScheme}
-        onPageChange={onPageChange}
+        onPageChange={(page) => {
+          table.setPageIndex(page - 1);
+        }}
       />
     </Box>
   );

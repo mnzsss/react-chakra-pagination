@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export interface NoContentProps {
   text: string;
-  icon?: JSX.Element;
+  icon?: any;
   children?: ReactNode;
   noShadow?: boolean;
 }

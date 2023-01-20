@@ -1,12 +1,15 @@
-export type Options<I = any> = {
+import { SortingState } from "@tanstack/react-table";
+
+export type Options<I> = {
   totalRegisters: number;
   page: number;
   items: I[];
   itemsPerPage?: number;
   siblingsCount?: number;
+  sorting?: SortingState;
 };
 
-export type Pagination<I = any> = {
+export type Pagination<I> = {
   pageItems: I[];
   totalPages: number;
   itemsPerPage: number;
