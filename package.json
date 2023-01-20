@@ -15,9 +15,6 @@
     "release": "yarn build && yarn release-it",
     "lint": "tsc"
   },
-  "publishConfig": {
-    "gabrieldsm99:registry": "https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mnzsss/react-chakra-pagination.git"
