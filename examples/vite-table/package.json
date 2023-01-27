@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.10.5",
     "framer-motion": "^8.5.0",
     "react": "^18.2.0",
-    "react-chakra-pagination": "^1.1.3",
+    "react-chakra-pagination": "^2.0.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1"
   },
