@@ -1,6 +1,7 @@
 .changeset
 src
 examples
+scripts
 pnpm-lock.yaml
 tsconfig.json
 .gitignore

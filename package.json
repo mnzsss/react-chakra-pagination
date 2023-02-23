@@ -12,7 +12,7 @@
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "check-exports": "check-export-map",
     "changeset": "changeset",
-    "release": "pnpm run build && pnpm run check-exports && pnpm run lint",
+    "release": "./scripts/release.sh",
     "publish": "changeset publish",
     "lint": "tsc"
   },
