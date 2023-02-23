@@ -61,6 +61,7 @@ export function Table<Data extends object>({
   columns,
   colorScheme = "teal",
   itemsPerPage = 10,
+  totalRegisters = data.length,
   emptyData,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
   onPageChange = () => {},
@@ -75,7 +76,7 @@ export function Table<Data extends object>({
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const paginationState = usePagination<Data>({
-    totalRegisters: data.length,
+    totalRegisters,
     page: pageIndex + 1,
     items: data,
     itemsPerPage: pageSize,
