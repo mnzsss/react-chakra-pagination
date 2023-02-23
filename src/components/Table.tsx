@@ -1,35 +1,35 @@
-import * as React from "react";
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 import {
-  Table as ChakraTable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
   Box,
-  ThemeTypings,
   chakra,
+  Table as ChakraTable,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  ThemeTypings,
+  Tr,
 } from "@chakra-ui/react";
 import {
   ColumnDef,
-  useReactTable,
   flexRender,
   getCoreRowModel,
-  SortingState,
   getSortedRowModel,
   PaginationState,
+  SortingState,
+  useReactTable,
 } from "@tanstack/react-table";
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import * as React from "react";
 
 import { usePagination } from "../hooks/usePagination";
 
-import { EmptyMessage } from "../types/Table";
 import { BasePagination } from "../types/Pagination";
+import { EmptyMessage } from "../types/Table";
 
 import { NoContent } from "./NoContent";
 import { Pagination } from "./Pagination";
 
-interface TableProps<Data extends object> extends BasePagination {
+interface TableProps<Data extends object> extends Partial<BasePagination> {
   /** List parsed data columns using string or custom component */
   columns: ColumnDef<Data, any>[];
   /** Pass the array of Table Headers */
@@ -50,6 +50,7 @@ interface TableProps<Data extends object> extends BasePagination {
    * Define sort icons
    */
   sortIcons?: {
+    // FIXME: Add icons type
     up?: any;
     down?: any;
   };
@@ -62,10 +63,12 @@ export function Table<Data extends object>({
   itemsPerPage = 10,
   emptyData,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
+  onPageChange = () => {},
+  page = 0,
 }: TableProps<Data>) {
   const [{ pageIndex, pageSize }, setPagination] =
     React.useState<PaginationState>({
-      pageIndex: 0,
+      pageIndex: page,
       pageSize: itemsPerPage,
     });
 
@@ -185,6 +188,7 @@ export function Table<Data extends object>({
         colorScheme={colorScheme}
         onPageChange={(page) => {
           table.setPageIndex(page - 1);
+          onPageChange(page);
         }}
       />
     </Box>

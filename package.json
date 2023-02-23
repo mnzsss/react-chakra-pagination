@@ -3,16 +3,15 @@
   "version": "2.0.3",
   "author": "Gabriel Menezes <gabrielsmenezes99@gmail.com>",
   "license": "MIT",
-  "description": "Easy way for paginate lists using Chakra UI, using lists components and hooks.",
+  "description": "Easy way for paginate anything using Chakra UI.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublish": "rm -rf ./dist && pnpm run build",
     "build": "tsup src/index.ts --format cjs,esm --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "changeset": "changeset",
-    "release": "yarn build && yarn release-it",
+    "publish": "changeset publish",
     "lint": "tsc"
   },
   "repository": {

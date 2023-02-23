@@ -1,18 +1,18 @@
-import React from "react";
 import {
   Box,
   List as ChakraList,
-  ListItem as ChakraListItem,
-  OrderedList,
-  UnorderedList,
   ListIcon,
-  Text,
+  ListItem as ChakraListItem,
   ListProps as ChakraListProps,
+  OrderedList,
+  Text,
+  UnorderedList,
 } from "@chakra-ui/react";
+import React from "react";
 
+import { usePagination } from "../hooks/usePagination";
 import { ListItem } from "../types/List";
 import { BasePagination } from "../types/Pagination";
-import { usePagination } from "../hooks/usePagination";
 import { Pagination } from "./Pagination";
 
 interface ListProps extends Omit<ChakraListProps, "listStyle">, BasePagination {

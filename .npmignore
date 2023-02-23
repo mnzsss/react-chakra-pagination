@@ -1,2 +1,8 @@
-.eslintrc
+.changeset
+src
+examples
+pnpm-lock.yaml
+tsconfig.json
 .gitignore
+.github
+.changeset

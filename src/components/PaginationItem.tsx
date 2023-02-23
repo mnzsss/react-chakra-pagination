@@ -1,5 +1,5 @@
-import React from "react";
 import { Button, ThemeTypings } from "@chakra-ui/react";
+import React from "react";
 
 interface PaginationItemProps {
   isCurrent?: boolean;

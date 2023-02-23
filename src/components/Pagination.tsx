@@ -1,5 +1,5 @@
-import React from "react";
 import { Stack, Text, ThemeTypings } from "@chakra-ui/react";
+import React from "react";
 
 import { PaginationItem } from "./PaginationItem";
 

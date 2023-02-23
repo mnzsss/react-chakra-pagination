@@ -1,6 +1,5 @@
-import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export interface NoContentProps {
   text: string;
