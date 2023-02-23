@@ -61,9 +61,9 @@ export function Table<Data extends object>({
   columns,
   colorScheme = "teal",
   itemsPerPage = 10,
-  totalRegisters = data.length,
   emptyData,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
+  totalRegisters = data.length,
   onPageChange = () => {},
   page = 0,
 }: TableProps<Data>) {
