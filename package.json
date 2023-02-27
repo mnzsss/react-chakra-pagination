@@ -1,30 +1,33 @@
 {
+  "name": "chakra-pagination",
   "private": true,
   "scripts": {
     "dev": "./scripts/dev.sh",
     "build": "turbo run build --filter=./apps/*",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "postinstall": "manypkg check",
     "clean": "pnpm -r exec -- shx rm -rf node_modules coverage .next .turbo ./packages/**/dist && shx rm -rf node_modules",
     "update-deps": "turbo run update-deps --parallel && npx npm-check-updates -u",
     "check-deps": "turbo run check-deps --parallel && npx depcheck",
     "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
     "publish-packages": "turbo run build && changeset version && changeset publish"
   },
-  "devDependencies": {
-    "dotenv": "^16.0.3",
-    "dotenv-cli": "^7.0.0",
-    "eslint-config-base": "workspace:*",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
-    "prettier": "^2.8.4",
-    "shx": "^0.3.4",
-    "turbo": "^1.8.2"
-  },
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=7.0.0",
     "pnpm": ">=7"
   },
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "@manypkg/cli": "^0.20.0",
+    "dotenv": "^16.0.3",
+    "dotenv-cli": "^7.0.0",
+    "eslint-config-base": "0.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "shx": "^0.3.4",
+    "turbo": "^1.8.2"
+  }
 }
