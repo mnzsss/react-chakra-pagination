@@ -15,7 +15,7 @@
     "release": "./scripts/release.sh",
     "publish": "changeset publish",
     "lint": "eslint src/**/*.ts* --fix",
-    "ts-check": "tsc"
+    "ts-check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
