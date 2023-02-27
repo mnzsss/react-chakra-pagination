@@ -1,9 +1,9 @@
-import { Options, Pagination } from "../types/Pagination";
+import { Options, Pagination } from '../types/Pagination';
 
 function generatePagesArray(from: number, to: number): number[] {
   return [...new Array(to - from)]
     .map((_, index) => from + index + 1)
-    .filter((page) => page > 0);
+    .filter(page => page > 0);
 }
 
 export function usePagination<I>({
@@ -26,7 +26,7 @@ export function usePagination<I>({
     currentPage < lastPage
       ? generatePagesArray(
           currentPage,
-          Math.min(currentPage + siblingsCount, lastPage)
+          Math.min(currentPage + siblingsCount, lastPage),
         )
       : [];
 
@@ -38,15 +38,17 @@ export function usePagination<I>({
     .sort((a, b) => {
       const { desc, id } = sorting[0] ?? {};
 
-      if (typeof a[id] !== "string") {
+      // @ts-ignore
+      if (typeof a[id] !== 'string') {
         return undefined;
       }
 
       let order: any = desc ? b : a;
       let compare = desc ? a : b;
 
-      return order[id].localeCompare(compare[id], "pt-BR", {
-        sensitivity: "base",
+      // @ts-ignore
+      return order[id].localeCompare(compare[id], 'pt-BR', {
+        sensitivity: 'base',
       });
     })
     // Get the items for the current page size
