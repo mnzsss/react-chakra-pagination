@@ -1,7 +1,7 @@
-import { Stack, Text, ThemeTypings } from "@chakra-ui/react";
-import React from "react";
+import { Stack, Text, ThemeTypings } from '@chakra-ui/react';
+import React from 'react';
 
-import { PaginationItem } from "./PaginationItem";
+import { PaginationItem } from './PaginationItem';
 
 interface PaginationProps {
   onPageChange: (page: number) => void;
@@ -10,7 +10,7 @@ interface PaginationProps {
   nextPages: number[];
   previousPages: number[];
   siblingsCount: number;
-  colorScheme?: ThemeTypings["colorSchemes"];
+  colorScheme?: ThemeTypings['colorSchemes'];
 }
 
 export function Pagination({
@@ -41,7 +41,7 @@ export function Pagination({
         ) : null}
 
         {previousPages.length > 0
-          ? previousPages.map((page) => (
+          ? previousPages.map(page => (
               <PaginationItem
                 colorScheme={colorScheme}
                 onPageChange={onPageChange}
@@ -59,7 +59,7 @@ export function Pagination({
         />
 
         {nextPages.length > 0
-          ? nextPages.map((page) => (
+          ? nextPages.map(page => (
               <PaginationItem
                 colorScheme={colorScheme}
                 onPageChange={onPageChange}

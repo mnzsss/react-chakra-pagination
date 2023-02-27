@@ -1,11 +1,12 @@
-import * as CSS from "csstype";
-import { Token } from "./Helpers";
+import * as CSS from 'csstype';
+
+import { Token } from './Helpers';
 
 type ListItemWithIcon =
   | {
       icon: any;
-      iconColor: Token<CSS.Property.Color, "colors">;
-      iconPosition: "start" | "end";
+      iconColor: Token<CSS.Property.Color, 'colors'>;
+      iconPosition: 'start' | 'end';
     }
   | {
       icon?: any;

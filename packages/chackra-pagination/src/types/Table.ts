@@ -1,4 +1,4 @@
-import { NoContentProps } from "../components/NoContent";
+import { NoContentProps } from '../components/NoContent';
 
 export type DataType = {
   [key: string]: JSX.Element | string;

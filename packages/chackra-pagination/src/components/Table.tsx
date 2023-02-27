@@ -1,4 +1,4 @@
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import {
   Box,
   chakra,
@@ -9,7 +9,7 @@ import {
   Thead,
   ThemeTypings,
   Tr,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   ColumnDef,
   flexRender,
@@ -18,16 +18,15 @@ import {
   PaginationState,
   SortingState,
   useReactTable,
-} from "@tanstack/react-table";
-import * as React from "react";
+} from '@tanstack/react-table';
+import * as React from 'react';
 
-import { usePagination } from "../hooks/usePagination";
+import { usePagination } from '../hooks/usePagination';
 
-import { BasePagination } from "../types/Pagination";
-import { EmptyMessage } from "../types/Table";
-
-import { NoContent } from "./NoContent";
-import { Pagination } from "./Pagination";
+import { BasePagination } from '../types/Pagination';
+import { EmptyMessage } from '../types/Table';
+import { NoContent } from './NoContent';
+import { Pagination } from './Pagination';
 
 interface TableProps<Data extends object> extends Partial<BasePagination> {
   /** List parsed data columns using string or custom component */
@@ -38,7 +37,7 @@ interface TableProps<Data extends object> extends Partial<BasePagination> {
    * Custom color schemes using Chakra UI
    * @default 'teal'
    */
-  colorScheme?: ThemeTypings["colorSchemes"];
+  colorScheme?: ThemeTypings['colorSchemes'];
   /** Fallback for empty data  */
   emptyData?: EmptyMessage;
   /**
@@ -59,7 +58,7 @@ interface TableProps<Data extends object> extends Partial<BasePagination> {
 export function Table<Data extends object>({
   data,
   columns,
-  colorScheme = "teal",
+  colorScheme = 'teal',
   itemsPerPage = 10,
   emptyData,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
@@ -88,7 +87,7 @@ export function Table<Data extends object>({
       pageIndex,
       pageSize,
     }),
-    [pageIndex, pageSize]
+    [pageIndex, pageSize],
   );
 
   const table = useReactTable({
@@ -111,7 +110,7 @@ export function Table<Data extends object>({
     return (
       <NoContent
         {...emptyData}
-        text={emptyData?.text ?? "Nenhum dado para ser exibido."}
+        text={emptyData?.text ?? 'Nenhum dado para ser exibido.'}
       >
         {emptyData?.children}
       </NoContent>
@@ -122,9 +121,9 @@ export function Table<Data extends object>({
     <Box py="6" px="8" borderRadius="8" w="full" h="100%" color="">
       <ChakraTable>
         <Thead>
-          {table.getHeaderGroups().map((headerGroup) => (
+          {table.getHeaderGroups().map(headerGroup => (
             <Tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
+              {headerGroup.headers.map(header => {
                 const meta: any = header.column.columnDef.meta;
 
                 const UpIcon = sortIcons.up;
@@ -139,12 +138,12 @@ export function Table<Data extends object>({
                     >
                       {flexRender(
                         header.column.columnDef.header,
-                        header.getContext()
+                        header.getContext(),
                       )}
 
                       <chakra.span pl="4">
                         {header.column.getIsSorted() ? (
-                          header.column.getIsSorted() === "desc" ? (
+                          header.column.getIsSorted() === 'desc' ? (
                             <DownIcon aria-label="sorted descending" />
                           ) : (
                             <UpIcon aria-label="sorted ascending" />
@@ -160,7 +159,7 @@ export function Table<Data extends object>({
         </Thead>
 
         <Tbody>
-          {table.getRowModel().rows.map((row) => {
+          {table.getRowModel().rows.map(row => {
             return (
               <Tr key={row.id}>
                 {row.getVisibleCells().map((cell, index) => {
@@ -173,7 +172,7 @@ export function Table<Data extends object>({
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </Td>
                   );
@@ -187,7 +186,7 @@ export function Table<Data extends object>({
       <Pagination
         {...paginationState}
         colorScheme={colorScheme}
-        onPageChange={(page) => {
+        onPageChange={page => {
           table.setPageIndex(page - 1);
           onPageChange(page);
         }}

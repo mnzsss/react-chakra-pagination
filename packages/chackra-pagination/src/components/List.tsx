@@ -7,33 +7,34 @@ import {
   OrderedList,
   Text,
   UnorderedList,
-} from "@chakra-ui/react";
-import React from "react";
+} from '@chakra-ui/react';
+import React from 'react';
 
-import { usePagination } from "../hooks/usePagination";
-import { ListItem } from "../types/List";
-import { BasePagination } from "../types/Pagination";
-import { Pagination } from "./Pagination";
+import { usePagination } from '../hooks/usePagination';
 
-interface ListProps extends Omit<ChakraListProps, "listStyle">, BasePagination {
+import { ListItem } from '../types/List';
+import { BasePagination } from '../types/Pagination';
+import { Pagination } from './Pagination';
+
+interface ListProps extends Omit<ChakraListProps, 'listStyle'>, BasePagination {
   /** Items List */
   items: ListItem[];
   /** Control list style */
-  listStyle?: "ordered" | "unordered" | "none";
+  listStyle?: 'ordered' | 'unordered' | 'none';
 }
 
 export function List({
   items,
-  listStyle: style = "none",
+  listStyle: style = 'none',
   onPageChange,
   page,
   totalRegisters,
   ...props
 }: ListProps) {
   const Tag =
-    style === "none"
+    style === 'none'
       ? ChakraList
-      : style === "ordered"
+      : style === 'ordered'
       ? OrderedList
       : UnorderedList;
 
@@ -48,13 +49,13 @@ export function List({
       <Tag spacing={3} {...props}>
         {pageItems.map((item, i) => (
           <ChakraListItem key={i}>
-            {item.iconPosition === "start" ? (
+            {item.iconPosition === 'start' ? (
               <ListIcon as={item.icon} color={item.iconColor} />
             ) : null}
 
             <Text>{item.content}</Text>
 
-            {item.iconPosition === "end" ? (
+            {item.iconPosition === 'end' ? (
               <ListIcon as={item.icon} color={item.iconColor} />
             ) : null}
           </ChakraListItem>

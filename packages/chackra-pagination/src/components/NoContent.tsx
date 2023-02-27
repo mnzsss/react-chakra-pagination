@@ -1,5 +1,5 @@
-import { Flex, Text } from "@chakra-ui/react";
-import React, { ReactNode } from "react";
+import { Flex, Text } from '@chakra-ui/react';
+import React, { ReactNode } from 'react';
 
 export interface NoContentProps {
   text: string;
@@ -18,7 +18,7 @@ export function NoContent({ icon, text, children, noShadow }: NoContentProps) {
       direction="column"
       align="center"
       justify="center"
-      boxShadow={noShadow ? "unset" : "sm"}
+      boxShadow={noShadow ? 'unset' : 'sm'}
       h="100%"
     >
       {icon ? (

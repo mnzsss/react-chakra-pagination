@@ -5,14 +5,17 @@
       "cache": true
     },
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", "public/dist/**"]
+      "dependsOn": ["^build", "^lint"],
+      "outputs": ["dist/**", ".next/**", "public/dist/**"]
     },
     "clean": {
       "cache": false
     },
     "lint": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", "ts-check"]
+    },
+    "ts-check": {
+      "dependsOn": []
     },
     "test": {
       "outputs": ["coverage/**"],
