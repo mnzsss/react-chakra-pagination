@@ -14,7 +14,11 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "lib": ["ES2015", "DOM"],
+    "module": "ESNext",
+    "target": "ES6",
+    "jsx": "react-jsx"
   },
   "exclude": ["node_modules"]
 }
