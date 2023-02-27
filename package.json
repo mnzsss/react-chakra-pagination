@@ -9,8 +9,7 @@
     "update-deps": "turbo run update-deps --parallel && npx npm-check-updates -u",
     "check-deps": "turbo run check-deps --parallel && npx depcheck",
     "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
-    "release": "auto shipit",
-    "publish-packages": "turbo run build lint test && changeset version && changeset publish"
+    "publish-packages": "turbo run build lint test --filter=./packages/chakra-pagination && changeset version && changeset publish"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
