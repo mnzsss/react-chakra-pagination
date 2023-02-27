@@ -5,14 +5,14 @@
       "cache": true
     },
     "build": {
-      "dependsOn": ["^build", "^lint"],
+      "dependsOn": ["^lint", "^build"],
       "outputs": ["dist/**", ".next/**", "public/dist/**"]
     },
     "clean": {
       "cache": false
     },
     "lint": {
-      "dependsOn": ["^build", "ts-check"]
+      "dependsOn": ["ts-check"]
     },
     "ts-check": {
       "dependsOn": []
