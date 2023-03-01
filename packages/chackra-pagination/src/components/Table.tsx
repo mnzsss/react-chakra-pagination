@@ -25,7 +25,6 @@ import { usePagination } from '../hooks/usePagination';
 
 import { BasePagination } from '../types/Pagination';
 import { EmptyMessage } from '../types/Table';
-
 import { NoContent } from './NoContent';
 import { Pagination } from './Pagination';
 
