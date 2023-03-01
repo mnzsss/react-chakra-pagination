@@ -7,11 +7,17 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "postinstall": "manypkg check",
+    "commit": "git-cz",
     "clean": "pnpm -r exec -- shx rm -rf node_modules coverage .next .turbo ./packages/**/dist && shx rm -rf node_modules",
     "update-deps": "turbo run update-deps --parallel && npx npm-check-updates -u",
     "check-deps": "turbo run check-deps --parallel && npx depcheck",
     "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
     "publish-packages": "turbo run build && changeset version && changeset publish"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
   },
   "engines": {
     "node": ">=16.0.0",
@@ -20,10 +26,15 @@
   },
   "version": "0.0.1",
   "dependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/types": "^17.4.4",
     "@manypkg/cli": "^0.20.0",
+    "commitizen": "^4.3.0",
     "dotenv": "^16.0.3",
     "dotenv-cli": "^7.0.0",
     "eslint-config-base": "0.0.1",
+    "git-cz": "^4.9.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",

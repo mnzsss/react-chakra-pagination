@@ -25,6 +25,7 @@ import { usePagination } from '../hooks/usePagination';
 
 import { BasePagination } from '../types/Pagination';
 import { EmptyMessage } from '../types/Table';
+
 import { NoContent } from './NoContent';
 import { Pagination } from './Pagination';
 
@@ -58,13 +59,13 @@ interface TableProps<Data extends object> extends Partial<BasePagination> {
 export function Table<Data extends object>({
   data,
   columns,
-  colorScheme = 'teal',
-  itemsPerPage = 10,
-  emptyData,
-  sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
-  totalRegisters = data.length,
-  onPageChange = () => {},
   page = 0,
+  itemsPerPage = 10,
+  emptyData = {},
+  onPageChange = () => {},
+  colorScheme = 'teal',
+  totalRegisters = data.length,
+  sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
 }: TableProps<Data>) {
   const [{ pageIndex, pageSize }, setPagination] =
     React.useState<PaginationState>({
@@ -108,10 +109,7 @@ export function Table<Data extends object>({
 
   if (data.length === 0) {
     return (
-      <NoContent
-        {...emptyData}
-        text={emptyData?.text ?? 'Nenhum dado para ser exibido.'}
-      >
+      <NoContent {...emptyData} text={emptyData?.text ?? 'Nothing to show.'}>
         {emptyData?.children}
       </NoContent>
     );
