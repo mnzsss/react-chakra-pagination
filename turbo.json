@@ -1,0 +1,31 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "dev": {
+      "cache": true
+    },
+    "build": {
+      "dependsOn": ["^lint", "^build"],
+      "outputs": ["dist/**", ".next/**", "public/dist/**"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "lint": {
+      "dependsOn": ["ts-check"]
+    },
+    "ts-check": {
+      "dependsOn": []
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "update-deps": {
+      "cache": false
+    },
+    "check-deps": {
+      "cache": false
+    }
+  }
+}
