@@ -4,19 +4,6 @@
   "author": "Gabriel Menezes <gabrielsmenezes99@gmail.com>",
   "license": "MIT",
   "description": "Easy way for paginate anything using Chakra UI.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "check-exports": "check-export-map",
-    "changeset": "changeset",
-    "release": "./scripts/release.sh",
-    "publish": "changeset publish",
-    "lint": "eslint src/**/*.ts* --fix",
-    "ts-check": "tsc --noEmit"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mnzsss/react-chakra-pagination.git"
@@ -31,6 +18,25 @@
   "files": [
     "/dist"
   ],
+  "bugs": {
+    "url": "https://github.com/mnzsss/react-chakra-pagination/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "check-exports": "check-export-map",
+    "changeset": "changeset",
+    "release": "./scripts/release.sh",
+    "publish": "changeset publish",
+    "lint": "eslint src/**/*.ts* --fix",
+    "ts-check": "tsc --noEmit"
+  },
   "peerDependencies": {
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
@@ -58,8 +64,5 @@
     "release-it": "15.6.0",
     "tsup": "^6.5.0",
     "typescript": "^4.9.3"
-  },
-  "bugs": {
-    "url": "https://github.com/mnzsss/react-chakra-pagination/issues"
   }
 }
