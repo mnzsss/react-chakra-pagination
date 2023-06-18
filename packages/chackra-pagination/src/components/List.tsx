@@ -1,14 +1,13 @@
 import {
   Box,
   List as ChakraList,
-  ListIcon,
   ListItem as ChakraListItem,
   ListProps as ChakraListProps,
+  ListIcon,
   OrderedList,
   Text,
   UnorderedList,
 } from '@chakra-ui/react';
-import React from 'react';
 
 import { usePagination } from '../hooks/usePagination';
 
@@ -27,7 +26,6 @@ export function List({
   items,
   listStyle: style = 'none',
   onPageChange,
-  page,
   totalRegisters,
   ...props
 }: ListProps) {
@@ -40,7 +38,7 @@ export function List({
 
   const { pageItems, ...pagination } = usePagination({
     items,
-    page,
+    page: 0,
     totalRegisters,
   });
 

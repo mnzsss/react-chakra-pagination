@@ -1,13 +1,12 @@
 import {
-  Flex,
   Avatar,
-  Text,
   Box,
-  Icon,
   Button,
+  Flex,
   Heading,
+  Icon,
+  Text,
 } from '@chakra-ui/react';
-import * as React from 'react';
 
 // Use Chakra Ui for create a custom component for display field data in table
 
@@ -160,9 +159,6 @@ const users: User[] = [
 ];
 
 export default function App() {
-  // Control current Page
-  const [page, setPage] = React.useState(1);
-
   // Formatter for each user
   const tableData = users.map(user => ({
     name: (
@@ -225,10 +221,11 @@ export default function App() {
             icon: FiUser,
             text: 'Nobody is registered here.',
           }}
-          totalRegisters={users.length}
-          page={page}
+          // Control registers to show
+          // Exemple: show 10 registers of 15
+          totalRegisters={10}
           // Listen change page event and control the current page using state
-          onPageChange={page => setPage(page)}
+          onPageChange={page => console.log(page)}
           columns={columns}
           data={tableData}
         />
