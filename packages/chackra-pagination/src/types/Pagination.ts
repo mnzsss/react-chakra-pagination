@@ -21,10 +21,13 @@ export type Pagination<I> = {
 };
 
 export interface BasePagination {
-  page: number;
   /**
-   * If you paginate your list in server use this
-   * prop to pass the total length of list.
+   * Initial page of pagination.
+   * @default 1
+   */
+  initialPage: number;
+  /**
+    Control registers to show
    */
   totalRegisters: number;
   /** Listener change page */

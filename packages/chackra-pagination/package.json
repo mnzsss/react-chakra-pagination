@@ -1,6 +1,6 @@
 {
   "name": "react-chakra-pagination",
-  "version": "2.0.7",
+  "version": "2.1.0",
   "author": "Gabriel Menezes <gabrielsmenezes99@gmail.com>",
   "license": "MIT",
   "description": "Easy way for paginate anything using Chakra UI.",
@@ -35,34 +35,35 @@
     "release": "./scripts/release.sh",
     "publish": "changeset publish",
     "lint": "eslint src/**/*.ts* --fix",
-    "ts-check": "tsc --noEmit"
+    "ts-check": "tsc --noEmit",
+    "update-deps": "npx npm-check-updates -u"
   },
   "peerDependencies": {
-    "@chakra-ui/react": "^2.4.9",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "framer-motion": "^8.5.0",
+    "@chakra-ui/react": "^2.7.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.12.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.16",
-    "@tanstack/react-table": "^8.7.6",
-    "csstype": "^3.1.1"
+    "@chakra-ui/icons": "^2.0.19",
+    "@tanstack/react-table": "^8.9.2",
+    "csstype": "^3.1.2"
   },
   "devDependencies": {
-    "@chakra-ui/react": "^2.4.9",
-    "@changesets/cli": "^2.26.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
+    "@chakra-ui/react": "^2.7.0",
+    "@changesets/cli": "^2.26.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
     "check-export-map": "^1.3.0",
-    "framer-motion": "^8.5.0",
+    "framer-motion": "^10.12.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "release-it": "15.6.0",
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.3"
+    "release-it": "15.11.0",
+    "tsup": "^7.0.0",
+    "typescript": "^5.1.3"
   }
 }

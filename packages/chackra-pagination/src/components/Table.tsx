@@ -1,7 +1,6 @@
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import {
   Box,
-  chakra,
   Table as ChakraTable,
   Tbody,
   Td,
@@ -9,14 +8,15 @@ import {
   Thead,
   ThemeTypings,
   Tr,
+  chakra,
 } from '@chakra-ui/react';
 import {
   ColumnDef,
+  PaginationState,
+  SortingState,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  PaginationState,
-  SortingState,
   useReactTable,
 } from '@tanstack/react-table';
 import * as React from 'react';
@@ -58,24 +58,32 @@ interface TableProps<Data extends object> extends Partial<BasePagination> {
 export function Table<Data extends object>({
   data,
   columns,
-  page = 0,
+  initialPage = 1,
   itemsPerPage = 10,
   emptyData = {},
-  onPageChange = () => {},
+  onPageChange = () => { },
   colorScheme = 'teal',
   totalRegisters = data.length,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
 }: TableProps<Data>) {
+  const realTotalRegisters = React.useMemo(() => {
+    if (totalRegisters > data.length) {
+      return data.length;
+    }
+
+    return totalRegisters;
+  }, [data.length, totalRegisters]);
+
   const [{ pageIndex, pageSize }, setPagination] =
     React.useState<PaginationState>({
-      pageIndex: page,
+      pageIndex: initialPage - 1,
       pageSize: itemsPerPage,
     });
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const paginationState = usePagination<Data>({
-    totalRegisters,
+    totalRegisters: realTotalRegisters,
     page: pageIndex + 1,
     items: data,
     itemsPerPage: pageSize,
