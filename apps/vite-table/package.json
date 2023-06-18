@@ -1,7 +1,7 @@
 {
   "name": "example",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.12.16",
     "react": "^18.2.0",
-    "react-chakra-pagination": "2.1.0",
+    "react-chakra-pagination": "3.0.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0"
   },
