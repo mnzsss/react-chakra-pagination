@@ -33,8 +33,8 @@ export function List({
     style === 'none'
       ? ChakraList
       : style === 'ordered'
-        ? OrderedList
-        : UnorderedList;
+      ? OrderedList
+      : UnorderedList;
 
   const { pageItems, ...pagination } = usePagination({
     items,

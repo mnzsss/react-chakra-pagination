@@ -61,7 +61,7 @@ export function Table<Data extends object>({
   initialPage = 1,
   itemsPerPage = 10,
   emptyData = {},
-  onPageChange = () => { },
+  onPageChange = () => {},
   colorScheme = 'teal',
   totalRegisters = data.length,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
