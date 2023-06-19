@@ -1,0 +1,17 @@
+{
+  "index": {
+    "type": "page",
+    "title": "Nextra",
+    "display": "hidden"
+  },
+  "docs": {
+    "type": "page",
+    "title": "Documentation"
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://twitter.com/_mnzss",
+    "newWindow": true
+  }
+}

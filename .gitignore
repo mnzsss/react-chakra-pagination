@@ -106,3 +106,7 @@ lib
 
 # Ignore
 todo.md
+
+# Turbo
+.turbo
+!.turbo/config.json
