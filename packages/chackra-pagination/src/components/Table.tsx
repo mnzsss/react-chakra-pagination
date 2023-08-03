@@ -49,9 +49,8 @@ interface TableProps<Data extends object> extends Partial<BasePagination> {
    * Define sort icons
    */
   sortIcons?: {
-    // FIXME: Add icons type
-    up?: any;
-    down?: any;
+    up?: React.ElementType;
+    down?: React.ElementType;
   };
 }
 
@@ -61,7 +60,7 @@ export function Table<Data extends object>({
   initialPage = 1,
   itemsPerPage = 10,
   emptyData = {},
-  onPageChange = () => {},
+  onPageChange = () => { },
   colorScheme = 'teal',
   totalRegisters = data.length,
   sortIcons = { up: TriangleUpIcon, down: TriangleDownIcon },
@@ -90,14 +89,6 @@ export function Table<Data extends object>({
     sorting,
   });
 
-  const pagination = React.useMemo(
-    () => ({
-      pageIndex,
-      pageSize,
-    }),
-    [pageIndex, pageSize],
-  );
-
   const table = useReactTable({
     columns,
     data: paginationState.pageItems,
@@ -110,7 +101,10 @@ export function Table<Data extends object>({
     manualPagination: true,
     state: {
       sorting,
-      pagination,
+      pagination: {
+        pageIndex,
+        pageSize,
+      },
     },
   });
 
@@ -149,10 +143,12 @@ export function Table<Data extends object>({
                       <chakra.span pl="4">
                         {header.column.getIsSorted() ? (
                           header.column.getIsSorted() === 'desc' ? (
-                            <DownIcon aria-label="sorted descending" />
-                          ) : (
+                            DownIcon ? (
+                              <DownIcon aria-label="sorted descending" />
+                            ) : null
+                          ) : UpIcon ? (
                             <UpIcon aria-label="sorted ascending" />
-                          )
+                          ) : null
                         ) : null}
                       </chakra.span>
                     </Th>
